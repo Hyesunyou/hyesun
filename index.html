@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyesun You, Ph.D. | Science Education Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1F3A5F;
+    --navy-dark:#152840;
+    --gold:#B08D57;
+    --light:#EAF0F7;
+    --paper:#FBFAF8;
+    --ink:#22303F;
+    --gray:#5B6772;
+    --line:#E1E6EC;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.65;
+  }
+  h1,h2,h3,h4{font-family:'Source Serif 4',Georgia,serif; margin:0; color:var(--navy-dark);}
+  a{color:var(--navy); text-decoration:none;}
+  a:hover{color:var(--gold);}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,250,248,0.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:62px;}
+  .brand{font-family:'Source Serif 4',serif; font-weight:700; font-size:19px; color:var(--navy-dark); letter-spacing:.2px;}
+  .navlinks{display:flex; gap:26px; flex-wrap:wrap;}
+  .navlinks a{font-size:14px; font-weight:600; color:var(--gray); letter-spacing:.3px; text-transform:uppercase;}
+  .navlinks a:hover{color:var(--gold);}
+
+  /* HERO */
+  header.hero{
+    background:linear-gradient(160deg, var(--navy-dark) 0%, var(--navy) 100%);
+    color:#fff;
+    padding:70px 0 58px;
+    border-bottom:3px solid var(--gold);
+  }
+  .hero-inner{display:flex; align-items:center; gap:44px; flex-wrap:wrap;}
+  .avatar{
+    width:150px; height:150px; min-width:150px; border-radius:50%;
+    overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    border:3px solid rgba(255,255,255,0.5);
+    box-shadow:0 14px 34px rgba(0,0,0,0.30);
+  }
+  .avatar img{width:100%; height:100%; object-fit:cover; display:block;}
+  .hero-text h1{color:#fff; font-size:40px; margin-bottom:6px;}
+  .hero-text .role{font-size:17px; color:#D9C29B; font-weight:600; margin-bottom:14px;}
+  .hero-text .affil{font-size:15px; color:#CBD8E8; margin-bottom:18px; max-width:560px;}
+  .hero-contact{display:flex; gap:18px; flex-wrap:wrap; font-size:14px;}
+  .hero-contact a{color:#fff; border-bottom:1px solid rgba(255,255,255,0.4); padding-bottom:2px;}
+  .hero-contact a:hover{color:var(--gold); border-color:var(--gold);}
+  .badges{display:flex; gap:0; flex-wrap:wrap; margin-top:18px; align-items:center;}
+  .badge{
+    font-size:12.5px; font-weight:500; letter-spacing:.2px;
+    color:#D7E1EE;
+    padding:0 14px 0 0; margin-right:14px; border-right:1px solid rgba(255,255,255,0.28);
+  }
+  .badge:last-child{border-right:none; padding-right:0; margin-right:0;}
+
+  /* SECTIONS */
+  section{padding:64px 0;}
+  section.alt{background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .eyebrow{
+    font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--gold); margin-bottom:8px;
+  }
+  .sec-title{font-size:30px; margin-bottom:28px;}
+  .sec-title small{display:block; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; color:var(--gray); margin-top:6px;}
+
+  p.lead{font-size:16.5px; color:var(--ink); max-width:760px;}
+
+  /* GRID CARDS */
+  .grid{display:grid; gap:20px;}
+  .grid.cols-4{grid-template-columns:repeat(4,1fr);}
+  .grid.cols-3{grid-template-columns:repeat(3,1fr);}
+  .grid.cols-2{grid-template-columns:repeat(2,1fr);}
+  @media (max-width:900px){
+    .grid.cols-4{grid-template-columns:repeat(2,1fr);}
+    .grid.cols-3{grid-template-columns:repeat(2,1fr);}
+    .grid.cols-2{grid-template-columns:1fr;}
+    .hero-inner{flex-direction:column; text-align:center; align-items:center;}
+    .hero-contact{justify-content:center;}
+    .badges{justify-content:center;}
+  }
+  @media (max-width:560px){
+    .grid.cols-4{grid-template-columns:1fr;}
+    .grid.cols-3{grid-template-columns:1fr;}
+    .navlinks{gap:14px;}
+    .navlinks a{font-size:12px;}
+  }
+
+  .card{
+    background:#fff; border:1px solid var(--line); border-radius:10px; padding:22px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover{transform:translateY(-3px); box-shadow:0 12px 24px rgba(31,58,95,0.08);}
+  .card h4{font-size:16.5px; margin-bottom:8px; color:var(--navy-dark);}
+  .card p{font-size:14px; color:var(--gray); margin:0;}
+  .card .icon{
+    width:38px; height:38px; border-radius:9px; background:var(--light); color:var(--navy);
+    display:flex; align-items:center; justify-content:center; font-size:18px; margin-bottom:12px; font-weight:700;
+  }
+
+  /* PROJECT ITEMS */
+  .project{
+    display:flex; gap:18px; padding:20px 0; border-bottom:1px solid var(--line);
+  }
+  .project:last-child{border-bottom:none;}
+  .project .tag{
+    min-width:96px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.4px;
+    color:var(--navy); background:var(--light); border-radius:6px; padding:6px 10px; height:fit-content; text-align:center;
+  }
+  .project .tag.pending{background:#FBF0DE; color:#8A6A2C;}
+  .project h4{font-size:16px; margin-bottom:6px;}
+  .project p{font-size:14px; color:var(--gray); margin:0 0 6px;}
+  .project .team{font-size:12.5px; color:var(--navy); font-weight:600;}
+
+  /* PUBLICATIONS */
+  .pub-year{font-family:'Source Serif 4',serif; font-weight:700; color:var(--gold); font-size:14px; min-width:52px;}
+  .pub-item{display:flex; gap:16px; padding:14px 0; border-bottom:1px solid var(--line); font-size:14.5px;}
+  .pub-item:last-child{border-bottom:none;}
+  .pub-item .txt b{color:var(--navy-dark);}
+  .pub-item .txt .venue{font-style:italic; color:var(--gray);}
+  details{margin-top:18px;}
+  summary{
+    cursor:pointer; font-weight:700; color:var(--navy); font-size:14.5px;
+    padding:10px 0; list-style:none; display:flex; align-items:center; gap:8px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary:before{content:"+"; font-size:18px; color:var(--gold); font-weight:700;}
+  details[open] summary:before{content:"–";}
+
+  /* COLLABORATORS */
+  .collab{display:flex; gap:14px; align-items:flex-start; padding:16px; background:#fff; border:1px solid var(--line); border-radius:10px;}
+  .collab .initials{
+    min-width:46px; height:46px; border-radius:50%; background:var(--navy); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px; font-family:'Source Serif 4',serif;
+  }
+  .collab h4{font-size:15px; margin-bottom:4px;}
+  .collab p{font-size:13px; color:var(--gray); margin:0;}
+  .collab-group-title{font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--gray); margin:34px 0 14px;}
+  .collab-group-title:first-of-type{margin-top:0;}
+
+  /* CV / CONTACT */
+  .cv-box{
+    display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+    background:var(--navy-dark); color:#fff; border-radius:14px; padding:32px 36px;
+  }
+  .cv-box h3{color:#fff; font-size:22px; margin-bottom:6px;}
+  .cv-box p{color:#CBD8E8; font-size:14px; margin:0;}
+  .btn{
+    display:inline-block; background:var(--gold); color:var(--navy-dark); font-weight:700; font-size:14px;
+    padding:12px 24px; border-radius:8px; white-space:nowrap;
+  }
+  .btn:hover{background:#C9A874; color:var(--navy-dark);}
+
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:24px;}
+  @media (max-width:700px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-item{font-size:14.5px;}
+  .contact-item .lbl{font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:var(--gray); font-weight:700; margin-bottom:4px;}
+
+  footer{padding:30px 0; text-align:center; font-size:13px; color:var(--gray); border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Hyesun You, Ph.D.</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#collaborators">Collaborators</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="about">
+  <div class="wrap hero-inner">
+    <div class="avatar"><img src="hyesun_you_photo.jpeg" alt="Hyesun You"></div>
+    <div class="hero-text">
+      <h1>Hyesun You</h1>
+      <div class="role">Assistant Professor of Science Education</div>
+      <div class="affil">Department of Teaching and Learning, University of Iowa — researching assessment, technology integration, and AI in K–16 science education.</div>
+      <div class="hero-contact">
+        <a href="mailto:hyesun-you@uiowa.edu">hyesun-you@uiowa.edu</a>
+        <a href="https://orcid.org/0000-0003-2083-9957" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://scholar.google.com/citations?user=4HOcmBUAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      </div>
+      <div class="badges">
+        <span class="badge">Co-Editor-in-Chief, Asia-Pacific Science Education</span>
+        <span class="badge">27 Journal Articles</span>
+        <span class="badge">64 Conference Presentations</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about-bio">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <h2 class="sec-title">Bio</h2>
+    <p class="lead">
+      Hyesun You is an Assistant Professor of Science Education in the Department of Teaching and Learning at the
+      University of Iowa. She earned her Ph.D. in Science Education (2016) and an M.Ed. in Quantitative Methods
+      with a psychometrics emphasis (2021) from the University of Texas at Austin, following an M.S. in Science
+      Education and a B.S. in Chemistry (Biology minor) from Yonsei University, South Korea. Before entering the
+      professoriate, she taught middle and high school science in Seoul and later held research and visiting-scholar
+      positions at New York University, Michigan State University, and the University of Texas at Austin.
+    </p>
+    <p class="lead" style="margin-top:14px;">
+      Her research develops and validates rigorous assessments of interdisciplinary science understanding, examines
+      how technology-integrated instruction shapes K&ndash;12 teaching and learning, and applies machine learning and
+      learning-analytics methods to large-scale datasets such as PISA. She currently serves as Co-Editor-in-Chief of
+      <i>Asia-Pacific Science Education</i> and previously served as a Journal Board Member of the
+      <i>Journal of Research in Science Teaching</i> (2024&ndash;2026), the top-ranked journal in science education.
+    </p>
+  </div>
+</section>
+
+<section class="alt" id="research">
+  <div class="wrap">
+    <div class="eyebrow">Focus Areas</div>
+    <h2 class="sec-title">Research Interests</h2>
+    <div class="grid cols-4">
+      <div class="card">
+        <div class="icon">A</div>
+        <h4>Assessment Development &amp; Validation</h4>
+        <p>Interdisciplinary science assessments, Rasch and IRT modeling, and construct validity across K&ndash;16 contexts.</p>
+      </div>
+      <div class="card">
+        <div class="icon">T</div>
+        <h4>Technology-Integrated Instructional Practices</h4>
+        <p>How simulations, robotics, VR/AR, and digital tools shape science teaching and learning outcomes.</p>
+      </div>
+      <div class="card">
+        <div class="icon">AI</div>
+        <h4>AI Education in K&ndash;16</h4>
+        <p>Generative AI and AI-personalized feedback for meaningful, interdisciplinary science learning.</p>
+      </div>
+      <div class="card">
+        <div class="icon">D</div>
+        <h4>Learning Analytics</h4>
+        <p>Machine learning, topic modeling, and large-scale data (e.g., PISA) applied to science and math education.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow">Current Work</div>
+    <h2 class="sec-title">Projects &amp; Work in Progress</h2>
+
+    <div class="project">
+      <div class="tag">In Preparation</div>
+      <div>
+        <h4>How Technology Is Shaping K&ndash;12 Science Learning: A Scoping Review</h4>
+        <p>A scoping review of technology integration research in K&ndash;12 science education (2014&ndash;2024),
+          examining publication trends, technology types, theoretical frameworks, and reported learning outcomes.
+          Target: <i>Journal of Research in Science Teaching</i>, 2026.</p>
+        <div class="team">With L. Zhu, J. Moon, T. Aldemir, T. Kourkoulou, H. Lee, D. Song, S. Abu, W. Emerson, and S. Wang</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="tag">In Preparation</div>
+      <div>
+        <h4>Virtual Reality and Augmented Reality in K&ndash;12 Science Education: A Systematic Review</h4>
+        <p>Systematic review of VR/AR applications and their impacts on science teaching and learning outcomes.
+          Target: <i>Journal of Science Education and Technology</i>, 2026.</p>
+        <div class="team">With L. Zhu, J. Moon, T. Aldemir, H. Lee, D. Song, and S. Abu</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="tag">In Preparation</div>
+      <div>
+        <h4>AI-Enhanced Feedback as a Driver of Meaningful Learning in Carbon Cycling</h4>
+        <p>Examining how AI-generated feedback (ISACC II + ChatGPT) supports interdisciplinary understanding of
+          carbon cycling. Target: <i>International Journal of Science Education</i>.</p>
+        <div class="team">With Z. Fang and L. Kauffman</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="tag">Ongoing</div>
+      <div>
+        <h4>Interdisciplinary Science Assessment of Carbon Cycling (ISACC / ISACC II)</h4>
+        <p>A multi-year assessment-development program validating instruments for interdisciplinary science
+          understanding of global carbon cycling, spanning IRT/Rasch modeling, topic modeling, and AI-feedback extensions.</p>
+        <div class="team">With C. Delgado, S. Park, J. Marshall, M. Hong, and S. Yang</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="publications">
+  <div class="wrap">
+    <div class="eyebrow">Scholarship</div>
+    <h2 class="sec-title">Publications<small>27 refereed journal articles &middot; 5 book chapters &middot; 9 conference proceedings &middot; 64 presentations</small></h2>
+
+    <h3 style="font-size:17px; margin-bottom:6px;">Selected Recent Journal Articles</h3>
+    <div>
+      <div class="pub-item">
+        <div class="pub-year">2026</div>
+        <div class="txt">You, H., Nordine, J., Maeng, S., Tanus, J., Kaufmann, L., Hatcher, K., &amp; Onwukeme, I. Developing a Conceptual Framework of Interdisciplinary Understanding for Meaningful Learning. <span class="venue">Educational Sciences.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2026</div>
+        <div class="txt">You, H., Park, S., Delgado, C., &amp; Yang, S. Advancing Interdisciplinary Science Education: Validating the Interdisciplinary Science Assessment of Carbon Cycling II through Internal Structure and External Factors. <span class="venue">Research in Science Education.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2026</div>
+        <div class="txt">You, H., &amp; Hong, M. Next-Gen Assessment for Interdisciplinary Learning: Development and Validation of the Interdisciplinary Science Assessment of Carbon Cycling II. <span class="venue">International Journal of Science Education.</span></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div class="txt">Harper-Gampp, T., Delgado, C., You, H., Peterson, M., &amp; Chen, K. Measuring Size and Scale: The Development and Validation of the Assessment of Size and Scale Cognition (ASSC). <span class="venue">Research in Science Education</span>, 1&ndash;24.</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div class="txt">Zhu, L., You, H., Hong, M., &amp; Fang, Z. Predictive Insights into U.S. Students&rsquo; Mathematics Performance in PISA 2022: Using Ensemble Tree-Based Machine Learning Models. <span class="venue">International Journal of Educational Research, 130</span>, 102537.</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2025</div>
+        <div class="txt">You, H., Hong, M., Zhu, L., &amp; Fang, Z. What Predicts Scientific Literacy of U.S. Students: Revealing Influential Factors and Group Comparisons through the Application of a Supervised Machine Learning Model. <span class="venue">The International Journal of Science and Math Education</span>, 1&ndash;29.</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2024</div>
+        <div class="txt"><b>You, H., Park, S., Hong, M., &amp; Warren, A.</b> A Meta-Analysis Examining the Impact of Professional Development Programs in Science Education. <span class="venue">Journal of Research in Science Teaching, 62</span>(4), 971&ndash;1005. <i>&mdash; Top-ranked journal in science education (rank 49/270 education journals).</i></div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2024</div>
+        <div class="txt">Hong, M., &amp; You, H. Enhancing Rubric Development in Science Education through Topic Modeling Techniques. <span class="venue">The Journal of Experimental Education</span>, 1&ndash;18.</div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-year">2024</div>
+        <div class="txt">You, H., &amp; Hong, M. Looking Beyond Disciplinary Silos: Exploring Students&rsquo; Interdisciplinary Science Understanding Using Topic Modeling. <span class="venue">Research in Science Education, 54</span>(4), 1&ndash;25.</div>
+      </div>
+    </div>
+
+    <details>
+      <summary>Show all 27 refereed journal articles</summary>
+      <div class="pub-item"><div class="pub-year">2023</div><div class="txt">Sripathi, K., Moscarella, R., Prevost, L., You, H., Yoho, R., Merrill, J., Haudek, K., &amp; Urban-Lurain, M. Machine Learning Mixed Methods Text Analysis: An Illustration from Automated Scoring Models of Student Writing in Biology Education. <span class="venue">Journal of Mixed Methods Research, 18</span>(1), 48&ndash;70.</div></div>
+      <div class="pub-item"><div class="pub-year">2022</div><div class="txt">You, H., Park, S., Marshall, J., &amp; Delgado, C. Interdisciplinary Science Assessment of Carbon Cycling: Construct Validity Evidence Based on Internal Structure. <span class="venue">Research in Science Education, 52</span>, 473&ndash;492.</div></div>
+      <div class="pub-item"><div class="pub-year">2022</div><div class="txt">You, H. Bayesian versus Frequentist Estimation for Item Response Theory (IRT) Models of Interdisciplinary Science Assessment. <span class="venue">Interdisciplinary Journal of Environmental and Science Education, 18</span>(4), e2297.</div></div>
+      <div class="pub-item"><div class="pub-year">2021</div><div class="txt">You, H., Marshall, J., &amp; Delgado, C. Toward Interdisciplinary Learning: Development and Validation of an Assessment for Interdisciplinary Understanding of Global Carbon Cycling. <span class="venue">Research in Science Education, 51</span>, 1197&ndash;1221.</div></div>
+      <div class="pub-item"><div class="pub-year">2021</div><div class="txt">You, H., Delgado, C., &amp; DeAtley, K. Experts&rsquo; Model-Based Reasoning and Interdisciplinary Understanding of Carbon Cycling. <span class="venue">International Journal of Research in Education and Science, 7</span>(2), 562&ndash;579.</div></div>
+      <div class="pub-item"><div class="pub-year">2021</div><div class="txt">You, H., Mary, S., &amp; Kapila, V. Effectiveness of Professional Development: Integration of Educational Robotics into Science and Mathematics Curricula. <span class="venue">Journal of Science Education and Technology, 30</span>, 567&ndash;581.</div></div>
+      <div class="pub-item"><div class="pub-year">2020</div><div class="txt">You, H., Park, S., &amp; Delgado, C. A Closer Look at U.S. Schools: What Characteristics Are Associated with Scientific Literacy? A Multivariate Multilevel Analysis Using PISA 2015. <span class="venue">Science Education, 105</span>(2), 406&ndash;437. <i>&mdash; Top-ranked science education journal (rank 14/270).</i></div></div>
+      <div class="pub-item"><div class="pub-year">2019</div><div class="txt">Sripathi, K., Moscarella, R., Nehm, R., Yoho, R., You, H., Urban-Lurain, M., Haudek, K., &amp; Merrill, J. Mixed Student Ideas about Tracing Matter across Biological Scales in the Context of Human Weight Loss. <span class="venue">CBE&mdash;Life Sciences Education, 18</span>(3), 1&ndash;17.</div></div>
+      <div class="pub-item"><div class="pub-year">2018</div><div class="txt">You, H., Marshall, J., &amp; Delgado, C. Assessing Students&rsquo; Disciplinary and Interdisciplinary Understanding of Global Carbon Cycling. <span class="venue">Journal of Research in Science Teaching, 55</span>(3), 377&ndash;398.</div></div>
+      <div class="pub-item"><div class="pub-year">2018</div><div class="txt">You, H., Kim, K., Black, K. A., &amp; Min, K. Assessing Science Motivation for College Students: Validation of the Science Motivation Questionnaire II Using the Rasch-Andrich Rating Scale Model. <span class="venue">EURASIA Journal of Mathematics, Science and Technology Education, 14</span>(4), 1161&ndash;1173.</div></div>
+      <div class="pub-item"><div class="pub-year">2018</div><div class="txt">Marshall, J., Banner, J., &amp; You, H. Assessing the Effectiveness of Sustainability Learning. <span class="venue">Journal of College Science Teaching, 47</span>(3), 57&ndash;67.</div></div>
+      <div class="pub-item"><div class="pub-year">2017</div><div class="txt">Delgado, C., Jones, M. G., You, H., Roberston, R., &amp; Halberda, J. Scale and the Evolutionarily-Based Approximate Number System: An Exploratory Study. <span class="venue">International Journal of Science Education, 39</span>(8), 1008&ndash;1024.</div></div>
+      <div class="pub-item"><div class="pub-year">2017</div><div class="txt">You, H. Why Teach Science with an Interdisciplinary Approach? History, Trends, and Conceptual Frameworks. <span class="venue">Journal of Education and Learning, 6</span>(4), 66&ndash;77.</div></div>
+      <div class="pub-item"><div class="pub-year">2016</div><div class="txt">You, H. Rasch Validation of Reform-Oriented Science Teaching Practice Scale. <span class="venue">Journal of Science Teacher Education, 27</span>(4), 373&ndash;392.</div></div>
+      <div class="pub-item"><div class="pub-year">2016</div><div class="txt">You, H. No Teacher Left Behind: Curriculum Knowledge of Science Teachers. <span class="venue">Future of Education Research, 29</span>(2), 1&ndash;22.</div></div>
+      <div class="pub-item"><div class="pub-year">2015</div><div class="txt">You, H. Do Schools Make a Difference? Exploring School Effects on Mathematics Achievement in PISA 2012 Using Hierarchical Linear Modeling. <span class="venue">Journal of Educational Evaluation, 28</span>(5), 1301&ndash;1327.</div></div>
+      <div class="pub-item"><div class="pub-year">2014</div><div class="txt">You, H., &amp; Delgado, C. Toward an Interdisciplinary Science Curriculum: Analysis of the Connections across Science Learning Progressions. <span class="venue">International Journal for Cross-Disciplinary Subjects in Education, 4</span>(1), 1854&ndash;1862.</div></div>
+    </details>
+
+    <h3 style="font-size:17px; margin:30px 0 6px;">Book Chapters &amp; Manuscripts in Review</h3>
+    <div class="pub-item"><div class="pub-year">Press</div><div class="txt">Wagner, L., Won, H., &amp; You, H. AI-Driven Approaches in Early Childhood and Elementary Education: Insights from Methods Courses in Three Teacher Education Programs. In E. Jones, B. Crawford, &amp; M. Clay (Eds.), <span class="venue">Embracing Artificial Intelligence in the Classroom</span>, Information Age Publishing.</div></div>
+    <div class="pub-item"><div class="pub-year">Review</div><div class="txt">You, H., Park, S., Zhu, L., Hong, D., Hong, M., &amp; Jung, J. Advancing Professional Development for K&ndash;12 Math Educators: Meta-Analysis of Effects, Challenges, and Next Steps. <span class="venue">International Journal of Science and Mathematics Education</span> (under review, major revision).</div></div>
+    <div class="pub-item"><div class="pub-year">Review</div><div class="txt">You, H., Park, S., &amp; Hong, M. Teacher Professional Development in STEM Education (2015&ndash;2025): A Meta-Analysis of Effects and Emerging Directions. <span class="venue">Humanities and Social Sciences Communications</span> (under review).</div></div>
+    <div class="pub-item"><div class="pub-year">Review</div><div class="txt">Choi, S., &amp; You, H. Navigating Students&rsquo; Challenges and Solutions in VR-Based Science Lessons. <span class="venue">Computers &amp; Education</span> (under review).</div></div>
+
+    <p style="margin-top:22px; font-size:14px; color:var(--gray);">For the complete list &mdash; including all 9 conference proceedings, 64 refereed presentations, grants, and service &mdash; see the full CV below.</p>
+  </div>
+</section>
+
+<section id="collaborators">
+  <div class="wrap">
+    <div class="eyebrow">Network</div>
+    <h2 class="sec-title">Collaborators</h2>
+
+    <div class="collab-group-title">Core Research Team</div>
+    <div class="grid cols-3">
+      <div class="collab"><div class="initials">SP</div><div><h4>Sunyoung Park</h4><p>Meta-analyses of STEM professional development; PISA multilevel modeling; ISACC validation studies.</p></div></div>
+      <div class="collab"><div class="initials">MH</div><div><h4>Minjeong Hong</h4><p>Topic modeling of interdisciplinary science understanding; rubric development; item functioning methods.</p></div></div>
+      <div class="collab"><div class="initials">LZ</div><div><h4>Li Zhu</h4><p>Machine learning applications to PISA mathematics &amp; science performance; doctoral advisee (dissertation co-chair).</p></div></div>
+      <div class="collab"><div class="initials">CD</div><div><h4>Cesar Delgado</h4><p>Carbon cycling assessment program (ISACC/ISACC II); size &amp; scale cognition; interdisciplinary science curriculum.</p></div></div>
+      <div class="collab"><div class="initials">HW</div><div><h4>Hyunju Won</h4><p>Pre-K STEM teaching practices; NGSS-based instructional research; AI in early childhood teacher education.</p></div></div>
+      <div class="collab"><div class="initials">ZF</div><div><h4>Zhuoying Fang</h4><p>Machine learning methods; AI-enhanced feedback for carbon cycling; rural student mathematics performance.</p></div></div>
+    </div>
+
+    <div class="collab-group-title">K&ndash;12 Technology &amp; Scoping Review Team</div>
+    <div class="grid cols-3">
+      <div class="collab"><div class="initials">JM</div><div><h4>Jihyun Moon</h4><p>Co-author, K&ndash;12 technology integration scoping review and VR/AR systematic review.</p></div></div>
+      <div class="collab"><div class="initials">TA</div><div><h4>Tugba Aldemir</h4><p>Co-author, K&ndash;12 technology integration scoping review and VR/AR systematic review.</p></div></div>
+      <div class="collab"><div class="initials">TK</div><div><h4>Theoni Kourkoulou</h4><p>Co-author, K&ndash;12 technology integration scoping review.</p></div></div>
+      <div class="collab"><div class="initials">HL</div><div><h4>Hana Lee</h4><p>Co-author, technology integration and VR/AR reviews; preservice teacher interdisciplinary understanding.</p></div></div>
+      <div class="collab"><div class="initials">DS</div><div><h4>Dain Song</h4><p>Co-author, K&ndash;12 technology integration scoping review and VR/AR systematic review.</p></div></div>
+      <div class="collab"><div class="initials">SA</div><div><h4>Saif Abu</h4><p>Co-author, K&ndash;12 technology integration scoping review and VR/AR systematic review.</p></div></div>
+    </div>
+
+    <div class="collab-group-title">Cross-Institutional &amp; Doctoral Collaborators</div>
+    <div class="grid cols-3">
+      <div class="collab"><div class="initials">VK</div><div><h4>Vikram Kapila</h4><p>New York University &mdash; robotics-integrated professional development in science &amp; math.</p></div></div>
+      <div class="collab"><div class="initials">JM</div><div><h4>Jill Marshall</h4><p>University of Texas at Austin &mdash; carbon cycling assessment; physics &amp; interdisciplinary learning.</p></div></div>
+      <div class="collab"><div class="initials">DR</div><div><h4>Danielle Randall</h4><p>Engineering writing center collaboration; IEEE ProComm and ASEE proceedings.</p></div></div>
+      <div class="collab"><div class="initials">ZM</div><div><h4>Zeynep Mentesoglu</h4><p>Doctoral student &mdash; machine learning approaches to PISA science achievement.</p></div></div>
+      <div class="collab"><div class="initials">MH</div><div><h4>Mohammed Humaidi</h4><p>Doctoral student &mdash; dissertation committee (co-chair).</p></div></div>
+      <div class="collab"><div class="initials">DK</div><div><h4>Dennis Kwaka</h4><p>Doctoral student &mdash; dissertation committee (co-chair).</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="cv">
+  <div class="wrap">
+    <div class="eyebrow">Full Record</div>
+    <h2 class="sec-title">Curriculum Vitae</h2>
+    <div class="cv-box">
+      <div>
+        <h3>Download the full CV</h3>
+        <p>Complete list of publications, 64 conference presentations, grants &amp; awards, teaching, and service &mdash; last updated March 7, 2026.</p>
+      </div>
+      <a class="btn" href="CV_Hyesun_You.pdf" target="_blank" rel="noopener">Download PDF &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Get in Touch</div>
+    <h2 class="sec-title">Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-item"><div class="lbl">Email</div><a href="mailto:hyesun-you@uiowa.edu">hyesun-you@uiowa.edu</a></div>
+      <div class="contact-item"><div class="lbl">Phone</div>(512) 413-0177</div>
+      <div class="contact-item"><div class="lbl">Address</div>240 S Madison St, Iowa City, IA 52242</div>
+      <div class="contact-item"><div class="lbl">Department</div>Teaching and Learning, University of Iowa</div>
+      <div class="contact-item"><div class="lbl">ORCID</div><a href="https://orcid.org/0000-0003-2083-9957" target="_blank" rel="noopener">0000-0003-2083-9957</a></div>
+      <div class="contact-item"><div class="lbl">Google Scholar</div><a href="https://scholar.google.com/citations?user=4HOcmBUAAAAJ&hl=en" target="_blank" rel="noopener">View profile &rarr;</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Hyesun You &middot; Department of Teaching and Learning, University of Iowa
+</footer>
+
+</body>
+</html>
